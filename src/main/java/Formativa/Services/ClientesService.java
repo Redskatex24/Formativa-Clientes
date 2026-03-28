@@ -23,8 +23,8 @@ public class ClientesService {
         return clientesRepository.buscarPorId(id);
     }
 
-    public Clientes updateCliente(Clientes cliente) {
-        return clientesRepository.actualizar(cliente);
+    public Clientes updateCliente(Clientes cliente, int id) {
+        return clientesRepository.actualizar(cliente, id);
     }
 
     public String deleteCliente(int id) {

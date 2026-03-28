@@ -29,27 +29,25 @@ public class ClientesRepository {
         return clientes;
     }
 
-    public Clientes actualizar(Clientes clientes) {
-        int id = 0;
+    public Clientes actualizar(Clientes clientes, int id) {
         int idPosicion = 0;
 
         for (int i = 0; i<listaClientes.size(); i++) {
-            if (listaClientes.get(i).getId() == clientes.getId()) {
-                id = listaClientes.get(i).getId();
+            if (listaClientes.get(i).getId() == id) {
                 idPosicion = i;
             }
         }
 
         Clientes clientes1 = new Clientes();
         clientes1.setId(id);
-        clientes1.setName(listaClientes.get(id).getName());
-        clientes1.setRut(listaClientes.get(id).getRut());
-        clientes1.setEdad(listaClientes.get(id).getEdad());
-        clientes1.setDirección(listaClientes.get(id).getDirección());
-        clientes1.setCiudad(listaClientes.get(id).getCiudad());
-        clientes1.setPaís(listaClientes.get(id).getPaís());
-        clientes1.setTelefono(listaClientes.get(id).getTelefono());
-        clientes1.setEmail(listaClientes.get(id).getEmail());
+        clientes1.setName(clientes.getName());
+        clientes1.setRut(clientes.getRut());
+        clientes1.setEdad(clientes.getEdad());
+        clientes1.setDirección(clientes.getDirección());
+        clientes1.setCiudad(clientes.getCiudad());
+        clientes1.setPaís(clientes.getPaís());
+        clientes1.setTelefono(clientes.getTelefono());
+        clientes1.setEmail(clientes.getEmail());
 
         listaClientes.set(idPosicion, clientes1);
         return clientes1;
@@ -57,15 +55,6 @@ public class ClientesRepository {
     }
 
     public void eliminar(int id) {
-        int idPosicion = 0;
-        for (int i = 0; i<listaClientes.size(); i++) {
-            if (listaClientes.get(i).getId() == id) {
-                idPosicion = i;
-                break;
-            }
-        }
-        if (idPosicion > 0) {
-            listaClientes.remove(idPosicion);
-        }
+        listaClientes.removeIf(client -> client.getId() == id);
     }
 }
