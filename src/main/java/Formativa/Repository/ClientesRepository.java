@@ -43,9 +43,9 @@ public class ClientesRepository {
         clientes1.setName(clientes.getName());
         clientes1.setRut(clientes.getRut());
         clientes1.setEdad(clientes.getEdad());
-        clientes1.setDirección(clientes.getDirección());
+        clientes1.setDireccion(clientes.getDireccion());
         clientes1.setCiudad(clientes.getCiudad());
-        clientes1.setPaís(clientes.getPaís());
+        clientes1.setPais(clientes.getPais());
         clientes1.setTelefono(clientes.getTelefono());
         clientes1.setEmail(clientes.getEmail());
 
