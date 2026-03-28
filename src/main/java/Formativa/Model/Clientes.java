@@ -14,7 +14,7 @@ public class Clientes {
     private int id;
 
     @NotBlank(message = "el nombre es obligatorio")
-    private String name;
+    private String nombre;
 
     @NotBlank(message = "el rut es obligatorio")
     private String rut;
@@ -29,8 +29,9 @@ public class Clientes {
     private String ciudad;
     private String pais;
 
-    public String getName() {return name;}
+    public String getNombre() {return nombre;}
     public String getRut() {return rut;}
     public String getEdad() {return edad;}
     public String getEmail() {return email;}
+
 }

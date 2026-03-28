@@ -40,7 +40,7 @@ public class ClientesRepository {
 
         Clientes clientes1 = new Clientes();
         clientes1.setId(id);
-        clientes1.setName(clientes.getName());
+        clientes1.setNombre(clientes.getNombre());
         clientes1.setRut(clientes.getRut());
         clientes1.setEdad(clientes.getEdad());
         clientes1.setDireccion(clientes.getDireccion());
