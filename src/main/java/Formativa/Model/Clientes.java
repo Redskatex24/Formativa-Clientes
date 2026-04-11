@@ -17,12 +17,12 @@ public class Clientes {
     private int id;
 
     @Column(nullable = false)
-    private String nombre;
+    private String name;
 
     @Column(nullable = false)
     private String rut;
 
-    private int edad;
+    private int age;
 
     @Column(nullable = false)
     private String email;
