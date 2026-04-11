@@ -1,5 +1,6 @@
 package Formativa.Model;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,16 +8,23 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "clientes")
 public class Clientes {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(nullable = false)
     private String nombre;
+
+    @Column(nullable = false)
     private String rut;
-    private String edad;
+
+    private int edad;
+
+    @Column(nullable = false)
     private String email;
-    private String telefono;
-    private String direccion;
-    private String ciudad;
-    private String pais;
 
 }
