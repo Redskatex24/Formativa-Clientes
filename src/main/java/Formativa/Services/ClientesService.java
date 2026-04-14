@@ -7,6 +7,9 @@ import Formativa.dto.ClientesRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class ClientesService {
     @Autowired
@@ -23,25 +26,33 @@ public class ClientesService {
         return convertirADTO(guardado);
     }
 
-    //public List<Clientes> getClientes(){
+    public List<ClientesDTO> listar() {
+        return clientesRepository.findAll()
+                .stream()
+                .map(this::convertirADTO)
+                .collect(Collectors.toList());
+    }
 
-      //  return clientesRepository.getClass();
-    //}
+    public Clientes buscarPorId(int id) {
+        Clientes clientes = clientesRepository.findById(id).orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
+        return convertirADTO(clientes);
+    }
 
-    //public Clientes getClienteId(int id) {
+    public Clientes actualizar(int id, ClientesRequest request) {
+        Clientes clienteExistente = clientesRepository.findById(id).orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
 
-      //  return clientesRepository.getReferenceById(id);
-    //}
+        clienteExistente.setName(request.getName());
+        clienteExistente.setRut(request.getRut());
+        clienteExistente.setAge(request.getAge());
+        clienteExistente.setEmail(request.getEmail());
 
-    //public Clientes updateCliente(Clientes cliente, int id) {
+        Clientes actualizado = clientesRepository.save(clienteExistente);
+        return convertirADTO(actualizado);
+    }
 
-      //  return clientesRepository.update(cliente, id);
-    //}
-
-    //public String deleteCliente(int id) {
-      //  clientesRepository.delete(id);
-        //return "Cliente removido";
-    //}
+    public String eliminar(int id) {
+        clientesRepository.delete(id);
+    }
 
     private ClientesDTO convertirADTO(Clientes clientes) {
         ClientesDTO dto = new ClientesDTO();

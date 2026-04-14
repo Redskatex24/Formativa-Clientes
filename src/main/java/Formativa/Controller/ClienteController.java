@@ -22,7 +22,7 @@ public class ClienteController {
 //    }
 
     @PostMapping
-    public ClientesDTO cadastrarClientes(@RequestBody ClientesRequest clientes) {
+    public ClientesDTO guardarClientes(@RequestBody ClientesRequest clientes) {
         return clientesService.guardar(clientes);
     }
 
