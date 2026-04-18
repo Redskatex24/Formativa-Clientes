@@ -1,6 +1,6 @@
-package Formativa.Repository;
+package Formativa.repository;
 
-import Formativa.Model.Clientes;
+import Formativa.model.Clientes;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

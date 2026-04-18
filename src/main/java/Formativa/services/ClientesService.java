@@ -1,7 +1,7 @@
-package Formativa.Services;
+package Formativa.services;
 
-import Formativa.Model.Clientes;
-import Formativa.Repository.ClientesRepository;
+import Formativa.model.Clientes;
+import Formativa.repository.ClientesRepository;
 import Formativa.dto.ClientesDTO;
 import Formativa.dto.ClientesRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,13 +33,13 @@ public class ClientesService {
                 .collect(Collectors.toList());
     }
 
-    public Clientes buscarPorId(int id) {
-        Clientes clientes = clientesRepository.findById(id).orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
+    public ClientesDTO buscarPorId(int id) {
+        Clientes clientes = clientesRepository.findById(id).orElseThrow(() -> new NullPointerException("Cliente no encontrado por el id: " + id));
         return convertirADTO(clientes);
     }
 
-    public Clientes actualizar(int id, ClientesRequest request) {
-        Clientes clienteExistente = clientesRepository.findById(id).orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
+    public ClientesDTO actualizar(int id, ClientesRequest request) {
+        Clientes clienteExistente = clientesRepository.findById(id).orElseThrow(() -> new NullPointerException("Cliente no encontrado"));
 
         clienteExistente.setName(request.getName());
         clienteExistente.setRut(request.getRut());
@@ -50,11 +50,12 @@ public class ClientesService {
         return convertirADTO(actualizado);
     }
 
-    public String eliminar(int id) {
-        clientesRepository.delete(id);
+    public void eliminar(int id) {
+        clientesRepository.deleteById(id);
     }
 
     private ClientesDTO convertirADTO(Clientes clientes) {
+        if(clientes == null) return null;
         ClientesDTO dto = new ClientesDTO();
         dto.setId(clientes.getId());
         dto.setName(clientes.getName());

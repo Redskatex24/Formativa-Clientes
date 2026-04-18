@@ -1,4 +1,4 @@
-package Formativa.Model;
+package Formativa.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
